@@ -46,6 +46,14 @@ public class IlhaDeCalor {
         this.zona = zona;
     }
 
-    
+    @Override
+    public String toString() {
+        return String.format(
+            """
+            Bairro: %s;
+            Id: %s
+            Zona: %s
+            """, this.getId(), this.getBairro(), this.getZona());
+    }   
 
 }
