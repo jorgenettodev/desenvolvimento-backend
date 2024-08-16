@@ -24,7 +24,7 @@ public class Ex01Application {
 		return ilhasDeCalor;
 	}
 
-	@PostMapping("/adicionar-ilha/")
+	@PostMapping
 	public String adicionarIlhaDeCalor(@RequestBody IlhaDeCalor ilha) {
 		// IlhaDeCalor novaIlha = (IlhaDeCalor) ilha;
 		ilhasDeCalor.add(ilha);
