@@ -8,15 +8,17 @@ public class Pet {
     private int id;
     private String especie;
     private String nome;
+    private boolean jaFoiAdotado;
 
     public Pet() {
 
     }
 
-    public Pet(int id, String especie, String nome) {
+    public Pet(int id, String especie, String nome, boolean jaFoiAdotado) {
         this.id = id;
         this.especie = especie;
         this.nome = nome;
+        this.jaFoiAdotado = jaFoiAdotado;
     }
 
     public int getId() {
@@ -43,5 +45,12 @@ public class Pet {
         this.nome = nome;
     }
 
-    
+    public boolean isJaFoiAdotado() {
+        return jaFoiAdotado;
+    }
+
+    public void setJaFoiAdotado(boolean jaFoiAdotado) {
+        this.jaFoiAdotado = jaFoiAdotado;
+    }
+
 }

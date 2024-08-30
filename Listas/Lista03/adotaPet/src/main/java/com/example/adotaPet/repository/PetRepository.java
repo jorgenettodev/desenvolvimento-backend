@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PetRepository {
     private File arquivo = new File("src/main/resources/database/tb_pets.json");
     private ObjectMapper objectMapper = new ObjectMapper();
+    private final int ZERO_BYTES = 0;
 
     private List<Pet> pets;
 
@@ -22,7 +23,7 @@ public class PetRepository {
         }
 
         // verifica se o arquivo ta vazio
-        if (arquivo.length() > 0) {
+        if (arquivo.length() > ZERO_BYTES) {
             pets = objectMapper.readValue(arquivo, new TypeReference<ArrayList<Pet>>() {
             });
         } else {
@@ -38,7 +39,6 @@ public class PetRepository {
         // verifica se o pet já existe na lista
         for (Pet petNaLista : pets) {
             if (petNaLista.getId() == pet.getId()) {
-                System.out.println("O pet id já existe na lista");
                 return false;
             }
         }
