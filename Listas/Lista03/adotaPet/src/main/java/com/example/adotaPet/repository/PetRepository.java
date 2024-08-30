@@ -9,12 +9,12 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PetRepository {
-    static private File arquivo = new File("src/main/resources/database/tb_pets.json");
-    static private ObjectMapper objectMapper = new ObjectMapper();
+    private File arquivo = new File("src/main/resources/database/tb_pets.json");
+    private ObjectMapper objectMapper = new ObjectMapper();
 
-    static private List<Pet> pets;
+    private List<Pet> pets;
 
-    static public List<Pet> getAll() throws Exception {
+    public List<Pet> getAll() throws Exception {
         // verifica se o arquivo existe; senao existe: cria um novo arquivo;
 
         if (!arquivo.exists()) {
@@ -23,15 +23,16 @@ public class PetRepository {
 
         // verifica se o arquivo ta vazio
         if (arquivo.length() > 0) {
-            pets = objectMapper.readValue(arquivo, new TypeReference<ArrayList<Pet>>() {});
+            pets = objectMapper.readValue(arquivo, new TypeReference<ArrayList<Pet>>() {
+            });
         } else {
             pets = new ArrayList<>();
         }
 
         return pets;
     }
-    
-    static public boolean save(Pet pet) throws Exception {
+
+    public boolean save(Pet pet) throws Exception {
         List<Pet> pets = getAll();
 
         // verifica se o pet já existe na lista
@@ -49,9 +50,5 @@ public class PetRepository {
         // retorna true;
         return true;
     }
-    
-    public static void main(String[] args) throws Exception {
-       boolean resultado = save(new Pet(2,"Cachorro", "Bidu")); // true
-       System.out.println(resultado);
-    }
+
 }
